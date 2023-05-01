@@ -8,7 +8,7 @@ Aluno: **Rodrigo dos Santos Coelho** (*https://www.linkedin.com/in/rodrigoscoelh
 ## Primeiros passos
 
 Para executar este projeto é necessário que todas as libs Python descritas no arquivo `appconifg.txt` sejam instaladas. 
-Após clonar o repositório do GitHub (*https://github.com/CoelhoSRodrigo/mvp-full-stack-basico/*), é necessário ir ao diretório raiz, pelo terminal do Visual Studio Code, para que possa executar os comandos descritos abaixo.
+Após clonar o repositório do GitHub (*https://github.com/CoelhoSRodrigo/mvp-full-stack-basico-backend/*), é necessário ir ao diretório raiz, pelo terminal do Visual Studio Code, para que possa executar os comandos descritos abaixo.
 
 > Recomendo a utilização de ambiente virtual do tipo [virtualenv](https://virtualenpython -m venv .v.pypa.io/en/latest/).
 
