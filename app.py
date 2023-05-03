@@ -118,15 +118,15 @@ def delete_tarefa(query: TarefaSchemaById):
     
     if tarefa:
         if tarefa.status:
-            error_msg = 'Tarefa encerrada não permite exclusão.'
+            error_msg = 'Sorry! Não é permitido a remoção da loja com status encerrada.'
             return {'mesage': error_msg}, 404
         else:
             count = session.query(Tarefa).filter(Tarefa.id == tarefa_id).delete()
             session.commit()
-            return {'mesage': 'Tarefa deletada com sucesso', 'id': tarefa_id}, 200
+            return {'mesage': 'Loja removida com sucesso', 'id': tarefa_id}, 200
     else:
         print('entrou')
-        error_msg = 'Tarefa não encontrada'
+        error_msg = 'Ops! Loja não localizada'
         return {'mesage': error_msg}, 404
     
 #---------------------------------------
