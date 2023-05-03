@@ -14,10 +14,10 @@ Após clonar o repositório do GitHub (*https://github.com/CoelhoSRodrigo/mvp-fu
 python3 -m venv env
 ```
 ```
-aource env/bin/activate
+source env/bin/activate
 ```
 
-> O primeiro comando iremos utilizar para a criação do ambiente virtual do tipo [virtualenv] e o segundo para ativá-lo(https://virtualenpython -m venv .v.pypa.io/en/latest/).
+> O primeiro comando `python3 -m venv env`, iremos utilizar para a criação do ambiente virtual do tipo [virtualenv]. Já o segundo comando, `source env/bin/activate`, será para ativá-lo.
 
 ```
 (env)$ pip install -r requirements.txt
@@ -32,6 +32,7 @@ Para executar a API  basta executar:
 ```
 
 > O comando acima instala o framework Flask. Pelo fato de estarmos utilizando o parâmetro `--reload`, o servidor web reiniciará automaticamente após uma mudança no código fonte. 
+
 > Caso esteja o utilizando o macOS, pode ser que o AirPlay Receiver já esteja utilizando a portal 5000, sendo assim mude para a portal 5001 o comando do flask caso receba algum alerta do sistema operacional.
 
 
