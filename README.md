@@ -19,7 +19,7 @@ source env/bin/activate
 
 > O primeiro comando `python3 -m venv env`, iremos utilizar para a criação do ambiente virtual do tipo [virtualenv]. Já o segundo comando, `source env/bin/activate`, será para ativá-lo.
 
-> Não é necessário digitar o `(env)` nos comandos abaixo, ele apenas está listado abaixo para lembrar que está sendo executado com o ambiente virtual criado e ativo.
+> Não é necessário digitar o `(env)` nos comandos abaixo, ele apenas está listado para lembrar que está sendo executado com o ambiente virtual criado e ativo.
 
 ```
 (env) pip install -r requirements.txt
