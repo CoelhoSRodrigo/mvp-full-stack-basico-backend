@@ -22,9 +22,9 @@ def documentacao():
     return redirect('openapi/swagger')
 
 
-#-------------------------------------
+#----------------------------------
 # método de requisição POST TAREFA
-#-------------------------------------
+#----------------------------------
 @app.post(
     '/tarefa',
     tags=[tag_tarefa],
@@ -50,9 +50,9 @@ def post_tarefa(form: TarefaSchema):
         return {'erro': error_msg}, 400
 
 
-#-------------------------------------
+#---------------------------------
 # método de requisição GET TAREFAs
-#-------------------------------------
+#---------------------------------
 @app.get(
     '/tarefas',
     tags=[tag_tarefa],
@@ -74,9 +74,9 @@ def get_tarefas():
         return {'mesage': error_msg}, 400
 
 
-#----------------------------------------
+#---------------------------------------
 # método de requisição TAREFA POR TITULO
-#----------------------------------------
+#---------------------------------------
 @app.get(
     '/tarefaTitulo',
     tags=[tag_tarefa],
@@ -130,9 +130,9 @@ def delete_tarefa(query: TarefaSchemaById):
         error_msg = 'Tarefa não encontrada'
         return {'mesage': error_msg}, 404
     
-#----------------------------------------
+#---------------------------------------
 # método de requisição PUT UPDATE STATUS
-#----------------------------------------
+#---------------------------------------
 @app.put(
     '/tarefa',
     tags=[tag_tarefa],
