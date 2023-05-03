@@ -13,7 +13,7 @@ Após clonar o repositório do GitHub (*https://github.com/CoelhoSRodrigo/mvp-fu
 > Recomendo a utilização de ambiente virtual do tipo [virtualenv](https://virtualenpython -m venv .v.pypa.io/en/latest/).
 
 ```
-(env)$ pip install -r appconifg.txt
+(env)$ pip install -r requirements.txt
 ```
 
 > O comando acima instala as dependências/bibliotecas, descritas no arquivo `appconifg.txt`.
