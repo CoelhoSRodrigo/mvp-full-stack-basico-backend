@@ -19,8 +19,10 @@ source env/bin/activate
 
 > O primeiro comando `python3 -m venv env`, iremos utilizar para a criação do ambiente virtual do tipo [virtualenv]. Já o segundo comando, `source env/bin/activate`, será para ativá-lo.
 
+> Não é necessário digitar o `(env)` nos comandos abaixo, ele apenas está listado abaixo para lembrar que está sendo executado com o ambiente virtual criado e ativo.
+
 ```
-(env)$ pip install -r requirements.txt
+(env) pip install -r requirements.txt
 ```
 
 > O comando acima instala as dependências/bibliotecas, descritas no arquivo `requirements.txt`.
@@ -28,7 +30,7 @@ source env/bin/activate
 Para executar a API  basta executar:
 
 ```
-(env)$ flask run --host 0.0.0.0 --port 5000 --reload
+(env) flask run --host 0.0.0.0 --port 5000 --reload
 ```
 
 > O comando acima instala o framework Flask. Pelo fato de estarmos utilizando o parâmetro `--reload`, o servidor web reiniciará automaticamente após uma mudança no código fonte. 
