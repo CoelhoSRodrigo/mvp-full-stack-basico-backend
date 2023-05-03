@@ -17,9 +17,9 @@ python3 -m venv env
 source env/bin/activate
 ```
 
-> O primeiro comando `python3 -m venv env`, iremos utilizar para a criação do ambiente virtual do tipo [virtualenv]. Já o segundo comando, `source env/bin/activate`, será para ativá-lo.
+> O primeiro comando `python3 -m venv env`, iremos utilizar para a criação do ambiente virtual, já o segundo comando, `source env/bin/activate`, será para ativá-lo.
 
-> Não é necessário digitar o `(env)` nos comandos abaixo, ele apenas está listado para lembrar que está sendo executado com o ambiente virtual criado e ativo.
+> Não é necessário digitar o `(env)` nos comandos abaixo, uma vez que ele apenas está listado para lembrar que está sendo executado com o ambiente virtual criado e ativo.
 
 ```
 (env) pip install -r requirements.txt
@@ -35,7 +35,7 @@ Para executar a API  basta executar:
 
 > O comando acima instala o framework Flask. Pelo fato de estarmos utilizando o parâmetro `--reload`, o servidor web reiniciará automaticamente após uma mudança no código fonte. 
 
-> Caso esteja o utilizando o macOS, pode ser que o AirPlay Receiver já esteja utilizando a portal 5000, sendo assim mude para a portal 5001 o comando do flask caso receba algum alerta do sistema operacional.
+> Caso esteja o utilizando o macOS, pode ser que o AirPlay Receiver, ou outtra aplicação do sistema operacional, já esteja utilizando a portal 5000, sendo assim mude para a porta 5001 ao invés de 5000 no comando do `flask run --host 0.0.0.0 --port 5000 --reload`, caso receba algum alerta do sistema operacional.
 
 
 Abra o [http://localhost:5000/#/](http://localhost:5000/#/) no navegador para verificar o status da API em execução.
