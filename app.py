@@ -6,7 +6,7 @@ from models import Session
 from schemas.tarefa_schema import *
 from schemas.error_schema import *
 
-info = Info(title='API MVP PUC-Rio Lojas e-commerce', version='1.0.0')
+info = Info(title='MVP PUC-Rio Lojas e-Commerce', version='1.0.0')
 app = OpenAPI(__name__, info=info)
 CORS(app)
 
