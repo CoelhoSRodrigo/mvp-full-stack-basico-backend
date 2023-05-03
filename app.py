@@ -14,9 +14,10 @@ CORS(app)
 tag_tarefa = Tag(name='Tarefa', description='API para CRUD de tarefa')
 
 
-##############################################################################
-# DOCUMENTAÇÃO SWAGGER
-##############################################################################
+#-------------------------------------
+# Definição da documentação do Swagger
+#-------------------------------------
+
 @app.route('/',)
 def documentacao():
     return redirect('openapi/swagger')
