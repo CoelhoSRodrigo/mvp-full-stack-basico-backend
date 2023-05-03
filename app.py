@@ -27,8 +27,8 @@ def documentacao():
 @app.post(
     '/tarefa',
     tags=[tag_tarefa],
-    summary='Inclusão de Tarefa.',
-    description='Este método permite incluir novas tarefas no banco de dados.',
+    summary='Criando uma loja.',
+    description='Método responsável pela criação de uma loja no banco de dados.',
         responses={
         '201': TarefaSchemaView,
         '400': ErrorSchema 
@@ -55,8 +55,8 @@ def post_tarefa(form: TarefaSchema):
 @app.get(
     '/tarefas',
     tags=[tag_tarefa],
-    summary='Lista de Tarefas.',
-    description='Este método retorna todas a tarefas cadastradas.',
+    summary='Todas as lojas.',
+    description='Método responsável por retonar todas as lojas de e-coomerce criadas.',
     responses={
         '200': TarefaSchemaList,
         '400': ErrorSchema
