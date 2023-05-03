@@ -6,12 +6,12 @@ from models import Session
 from schemas.tarefa_schema import *
 from schemas.error_schema import *
 
-info = Info(title='API de Tarefas', version='1.0.0')
+info = Info(title='API MVP PUC-Rio Lojas e-commerce', version='1.0.0')
 
 app = OpenAPI(__name__, info=info)
 CORS(app)
 
-tag_tarefa = Tag(name='Tarefa', description='API para CRUD de tarefa')
+tag_tarefa = Tag(name='Tarefa', description='API para operação básica das lojas')
 
 
 #-------------------------------------
