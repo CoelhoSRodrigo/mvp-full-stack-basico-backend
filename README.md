@@ -1,54 +1,41 @@
-# API TAREFA
-Esta API foi desenvolvida para entrega do MVP da Sprint 1 da PUC-RIO. Ela foi desenvolvida em Flask para servir uma aplicação
-desenvolvida em HTML, CSS e JS.
+# Meu MVP - Backend API
 
-### Esta API trás os seguintes métodos:
+Projeto de MVP do backend do módulo Desenvolvimento Full Stack Básico da especialização online **Pós-Graduação em Desenvolvimento Full Stack**, do Departamento de Informática da PUC-Rio.
 
-| Método           | Funcionalidade                            |
-|------------------|-------------------------------------------|
-| DELETE/tarefa    | Deleta uma tarefa por ID                  |
-| POST/tarefa      | Cadastra uma nova tarefa                  |
-| PUT/tarefa       | Atualiza o Status de uma tarefa existente |
-| GET/tarefaTitulo | Busca tarefas pelo Título                 |
-| GET/tarefas      | Busca todas as tarefas                    |
+Aluno: **Rodrigo dos Santos Coelho** (*https://www.linkedin.com/in/rodrigoscoelho/*)
 
-# Como executar
+---
+## Primeiros passos
 
-Você precisa ter todas as libs utilizadas no projeto e que estão listadas no arquivo requirements.txt.
-
-Para executar este projeto você poderá criar um ambiente virtual primeiramente e ativá-lo. No linux, 
-onde desenvolvi o projeto, na linha de comando na raiz do projeto, utilizo o comando:
+Para executar este projeto é necessário que todas as libs Python descritas no arquivo `requirements.txt` sejam instaladas. 
+Após clonar o repositório do GitHub (*https://github.com/CoelhoSRodrigo/mvp-full-stack-basico-backend/*), é necessário ir ao diretório raiz, pelo terminal do Visual Studio Code, para que possa executar os comandos descritos abaixo.
 
 ```
 python3 -m venv env
 ```
-
-Após criar o ambiente virtual de nov env, estando ainda na raiz do projeto, ativar:
 ```
 source env/bin/activate
 ```
 
-Quando a virtual env estiver ativa, irá aparecer antes do caminho do projeto no cmd o nome (env). Agora, é necessário instalar as libs:
+> O primeiro comando `python3 -m venv env`, iremos utilizar para a criação do ambiente virtual, já o segundo comando, `source env/bin/activate`, será para ativá-lo.
+
+> Não é necessário digitar o `(env)` nos comandos abaixo, uma vez que ele apenas está listado para lembrar que está sendo executado com o ambiente virtual criado e ativo.
+
 ```
-pip install -r requirements.txt
+(env) pip install -r requirements.txt
 ```
 
-Para executar, se estiver utilizando o VSCode, abra o arquivo APP.py e utilize o atalho CTRL+F5 ou se estiver utilizando outro IDE de desenvolvimento
-procure nas opções do menu a opção de executar/rodar. Em seguida, abra o seu navegador e cole o endereço da API para ver a documentação:
+> O comando acima instala as dependências/bibliotecas, descritas no arquivo `requirements.txt`.
+
+Para executar a API  basta executar:
+
 ```
-http://127.0.0.1:5000/
+(env) flask run --host 0.0.0.0 --port 5000 --reload
 ```
 
-Esta página permitirá explorar a documentação da API
+> O comando acima instala o framework Flask. Pelo fato de estarmos utilizando o parâmetro `--reload`, o servidor web reiniciará automaticamente após uma mudança no código fonte. 
 
-### Para instalar e ativar a virtual env no windows:
+> Caso esteja o utilizando o macOS, pode ser que o AirPlay Receiver, ou outtra aplicação do sistema operacional, já esteja utilizando a portal 5000, sendo assim mude para a porta 5001 ao invés de 5000 no comando do `flask run --host 0.0.0.0 --port 5000 --reload`, caso receba algum alerta do sistema operacional.
 
-No windows, na raiz do projeto, exexute:
-```
-python -m venv env
-```
 
-Para ativar a env, execute:
-```
-env/Scripts/activate
-```
+Abra o [http://localhost:5000/#/](http://localhost:5000/#/) no navegador para verificar o status da API em execução.
