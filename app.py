@@ -16,7 +16,6 @@ tag_tarefa = Tag(name='Tarefa', description='API para operação básica das loj
 #-------------------------------------
 # Definição da documentação do Swagger
 #-------------------------------------
-
 @app.route('/',)
 def documentacao():
     return redirect('openapi/swagger')
