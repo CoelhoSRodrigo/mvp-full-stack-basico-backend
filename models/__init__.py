@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy_utils import database_exists, create_database
 from sqlalchemy.orm import sessionmaker
 from models.base import Base
-from models.tarefa import Tarefa
+from models.store import Store
 import os
 
 # Criação de diretório para a base de dados

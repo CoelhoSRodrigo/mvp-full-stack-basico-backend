@@ -1,16 +1,16 @@
 from flask_openapi3 import OpenAPI, Info, Tag
 from flask import redirect
 from flask_cors import CORS
-from models.tarefa import Tarefa
+from models.store import Store
 from models import Session
-from schemas.tarefa_schema import *
+from schemas.store_schema import *
 from schemas.error_schema import *
 
 info = Info(title='MVP PUC-Rio Lojas e-Commerce', version='1.0.0')
 app = OpenAPI(__name__, info=info)
 CORS(app)
 
-tag_tarefa = Tag(name='Tarefa', description='API para operação básica das lojas')
+tag_store = Tag(name='Store', description='API para operação básica das lojas')
 
 
 #-------------------------------------
@@ -22,108 +22,108 @@ def documentacao():
 
 
 #----------------------------------
-# método de requisição POST TAREFA
+# método de requisição POST Store
 #----------------------------------
 @app.post(
-    '/tarefa',
-    tags=[tag_tarefa],
+    '/store',
+    tags=[tag_store],
     summary='Criando uma loja.',
     description='Método responsável pela criação de uma loja no banco de dados.',
         responses={
-        '201': TarefaSchemaView,
+        '201': StoreSchemaView,
         '400': ErrorSchema 
     }
 )
-def post_tarefa(form: TarefaSchema):
+def post_store(form: StoreSchema):
     session = Session()
-    tarefa = Tarefa(
+    store = Store(
         titulo=form.titulo,
         descricao=form.descricao
     )
     try:
-        session.add(tarefa)
+        session.add(store)
         session.commit()
-        return apresenta_tarefa(tarefa), 201
+        return apresenta_store(store), 201
     except Exception as e:
         error_msg = e.args
         return {'erro': error_msg}, 400
 
 
 #---------------------------------
-# método de requisição GET TAREFAs
+# método de requisição GET Stores
 #---------------------------------
 @app.get(
-    '/tarefas',
-    tags=[tag_tarefa],
+    '/stores',
+    tags=[tag_store],
     summary='Todas as lojas.',
     description='Método responsável por retonar todas as lojas de e-coomerce criadas.',
     responses={
-        '200': TarefaSchemaList,
+        '200': StoreSchemaList,
         '400': ErrorSchema
     }
 )
-def get_tarefas():
+def get_stores():
     session = Session()
-    tarefas = session.query(Tarefa).all()
+    stores = session.query(Store).all()
 
-    if tarefas:
-        return apresenta_tarefas(tarefas), 200
+    if stores:
+        return apresenta_stores(stores), 200
     else:
-        error_msg = 'Não existem tarefas cadastradas'
+        error_msg = 'Não existem stores cadastradas'
         return {'mesage': error_msg}, 400
 
 
 #---------------------------------------
-# método de requisição TAREFA POR TITULO
+# método de requisição store POR TITULO
 #---------------------------------------
 @app.get(
-    '/tarefaTitulo',
-    tags=[tag_tarefa],
-    summary='Tarefas por Título',
-    description='Este método retorna uma tarefa pelo seu ID.',
+    '/storeTitulo',
+    tags=[tag_store],
+    summary='Stores por Título',
+    description='Este método retorna uma store pelo seu ID.',
     responses={
-        '200': TarefaSchemaView,
+        '200': StoreSchemaView,
         '404': ErrorSchema
     }
 )
-def get_tarefaTitulo(query: TarefaSchemaByTitulo):
-    tarefa_titulo = query.titulo
+def get_storeTitulo(query: StoreSchemaByTitulo):
+    store_titulo = query.titulo
     session = Session()
-    tarefas = session.query(Tarefa).filter(Tarefa.titulo.like('%'+tarefa_titulo+'%')).all()
-    if tarefas:
-        return apresenta_tarefas(tarefas), 200
+    stores = session.query(Store).filter(Store.titulo.like('%'+store_titulo+'%')).all()
+    if stores:
+        return apresenta_stores(stores), 200
     else:
-        error_msg = 'Tarefa não encontrada'
+        error_msg = 'Store não encontrada'
         return {'mesage': error_msg}, 404
 
 
 #------------------------------------------
-# método de requisição DELETE TAREFA POR ID
+# método de requisição DELETE Store POR ID
 #------------------------------------------
 @app.delete(
-    '/tarefa',
-    tags=[tag_tarefa],
-    summary='Exclusão de tarefa por ID.',
-    description='Este método permite a exclusão de uma tarefa pelo seu ID.',
+    '/store',
+    tags=[tag_store],
+    summary='Exclusão de store por ID.',
+    description='Este método permite a exclusão de uma store pelo seu ID.',
     responses={
-        '200': TarefaSchemaDelete,
+        '200': StoreSchemaDelete,
         '404': ErrorSchema
     }
 )
-def delete_tarefa(query: TarefaSchemaById):
-    tarefa_id = query.id
+def delete_store(query: StoreSchemaById):
+    store_id = query.id
     session = Session()
 
-    tarefa = session.query(Tarefa).filter(Tarefa.id == tarefa_id).first()
+    store = session.query(Store).filter(Store.id == store_id).first()
     
-    if tarefa:
-        if tarefa.status:
+    if store:
+        if store.status:
             error_msg = 'Sorry! Não é permitido a remoção da loja com status encerrada.'
             return {'mesage': error_msg}, 404
         else:
-            count = session.query(Tarefa).filter(Tarefa.id == tarefa_id).delete()
+            count = session.query(Store).filter(Store.id == store_id).delete()
             session.commit()
-            return {'mesage': 'Loja removida com sucesso', 'id': tarefa_id}, 200
+            return {'mesage': 'Loja removida com sucesso', 'id': store_id}, 200
     else:
         print('entrou')
         error_msg = 'Ops! Loja não localizada'
@@ -133,32 +133,32 @@ def delete_tarefa(query: TarefaSchemaById):
 # método de requisição PUT UPDATE STATUS
 #---------------------------------------
 @app.put(
-    '/tarefa',
-    tags=[tag_tarefa],
+    '/store',
+    tags=[tag_store],
     summary='Alteração do Status por ID.',
-    description='Este método permite alterar o status de Tarefas para True.',
+    description='Este método permite alterar o status de Stores para True.',
     responses={
-        '200': TarefaSchemaView,
+        '200': StoreSchemaView,
         '400': ErrorSchema,
         '404': ErrorSchema
     }
 )
-def update_tarefa(query: TarefaSchemaById, form: TarefaSchemaUpdate):
+def update_store(query: StoreSchemaById, form: StoreSchemaUpdate):
     session = Session()
-    tarefa_id = query.id
-    tarefa = session.query(Tarefa).filter(Tarefa.id == tarefa_id).first()
+    store_id = query.id
+    store = session.query(Store).filter(Store.id == store_id).first()
 
-    if tarefa:
-        if tarefa.status == False:
-            tarefa.status = form.status
-            tarefa.atualiza_data_conclusao()
+    if store:
+        if store.status == False:
+            store.status = form.status
+            store.atualiza_data_conclusao()
             session.commit()
-            return apresenta_tarefa(tarefa), 200
+            return apresenta_store(store), 200
         else:
-            error_msg = 'Tarefa já encerrada'
+            error_msg = 'Store já encerrada'
             return {'mesage': error_msg}, 400
     else:
-        error_msg = 'Tarefa não encontrada'
+        error_msg = 'Store não encontrada'
         return {'mesage': error_msg}, 404
 
 
